@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { useHistory, Redirect } from "react-router-dom";
 
 const Login = () => {
   // make a post request to retrieve a token from the api
@@ -30,7 +30,7 @@ const Login = () => {
           username: "",
           password: "",
         });
-        localStorage.setItem("token", res.data);
+        localStorage.setItem("token", res.data.payload);
         history.push("/bubbles");
       })
       .catch((err) => {
